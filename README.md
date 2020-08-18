@@ -221,6 +221,7 @@ melbourne_model.fit(train_X, train_y)
 ### Narrowing the number of features
 ```
 from sklearn.feature_selection import SelectKBest, f_regression
+from sklearn.model_selection import train_test_split
 # pick the k-number of features
 selector = SelectKBest(score_func=f_regression, k=15)
 X_train_selected = selector.fit_transform(X_train, y_train)
@@ -255,6 +256,9 @@ for k in range(1, len(X_train.columns)+1):
     mae = mean_absolute_error(y_test, y_pred)
     print(f'Test Mean Absolute Error: ${mae:,.0f} \n')
 ```
+
+### Cross validation visual
+<img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width="600">
 
 
 
