@@ -261,6 +261,10 @@ for k in range(1, len(X_train.columns)+1):
 <img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width="500">
 
 
+### Metrics for assessing and scoring models
+[Scikit-learn metrics](https://scikit-learn.org/stable/modules/model_evaluation.html)
+
+
 
 
 
