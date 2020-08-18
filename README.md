@@ -258,7 +258,7 @@ for k in range(1, len(X_train.columns)+1):
 ```
 
 ### Cross validation visual
-<img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width="600">
+<img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width="500">
 
 
 
