@@ -215,5 +215,60 @@ melbourne_model.fit(train_X, train_y)
 ```mean_absolute_error(val_y, val_predictions)```
 
 ### Modeling
-Decision Trees - parameters to play with - size of a node - depth of tree
-Random forest - makes many trees and averages their predictions (distribution of sorts)
+- Decision Trees - parameters to play with - size of a node - depth of tree
+- Random forest - makes many trees and averages their predictions (distribution of sorts)
+
+### Narrowing the number of features
+```
+from sklearn.feature_selection import SelectKBest, f_regression
+# pick the k-number of features
+selector = SelectKBest(score_func=f_regression, k=15)
+X_train_selected = selector.fit_transform(X_train, y_train)
+X_test_selected = selector.transform(X_test)
+
+# TODO: Which features were selected?
+selected_mask = selector.get_support()
+all_names = X_train.columns
+selected_names = all_names[selected_mask]
+unselected_names = all_names[~selected_mask]
+
+print(selected_names)
+# OR
+print('Features selected:')
+for name in selected_names:
+    print(name)
+```
+
+
+### Example `for loop` of what number of features to select
+```
+for k in range(1, len(X_train.columns)+1):
+    print(f'{k} features')
+
+    selector = SelectKBest(score_func=f_regression, k=k)
+    X_train_selected = selector.fit_transform(X_train, y_train)
+    X_test_selected = selector.transform(X_test)
+
+    model = LinearRegression()
+    model.fit(X_train_selected, y_train)
+    y_pred = model.predict(X_test_selected)
+    mae = mean_absolute_error(y_test, y_pred)
+    print(f'Test Mean Absolute Error: ${mae:,.0f} \n')
+```
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
